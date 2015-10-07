@@ -17,3 +17,4 @@
 /tmp
 
 config/deploy/production.rb
+config/config.yml
