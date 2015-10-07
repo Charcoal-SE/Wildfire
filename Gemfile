@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'awesome_print'
 gem "twitter-bootstrap-rails"
+gem "puma"
 
 gem "mysql2", group: :production
 
@@ -49,5 +50,6 @@ group :development do
   gem 'capistrano'
   gem 'capistrano-rails'
   gem 'capistrano-rvm'
+  gem 'capistrano3-puma'
 end
 
