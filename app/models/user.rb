@@ -6,6 +6,15 @@ class User < ActiveRecord::Base
 
   has_many :flag_queues
 
+  after_create do
+    f = FlagQueue.new
+    f.user = self
+    f.name = "Queue"
+    f.save!
+
+    Rails.logger.info "Created flag queue #{f.id} for new user #{self.id}"
+  end
+
   def active_for_authentication? 
     super && approved? 
   end

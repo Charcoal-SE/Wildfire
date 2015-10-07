@@ -14,11 +14,6 @@ class FlagQueuesController < ApplicationController
   def show
   end
 
-  # GET /flag_queues/new
-  def new
-    @flag_queue = FlagQueue.new
-  end
-
   # GET /flag_queues/1/edit
   def edit
   end
