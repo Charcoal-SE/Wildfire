@@ -11,7 +11,7 @@
     <li>I promise I won't do anything evil. However, there's always the possibility that the NSA, Amazon, Nigeria, etc. infiltrate my server. If I see any indication that that has happened, I'll send you an email and invalidate your access token. Is this a risk you're willing to take?</li>
   </ul>
   </br>
-  <p><a href="https://stackexchange.com/oauth?client_id=5723&scope=write_access,no_expiry&redirect_uri=http://flag-eventually.erwaysoftware.com/access_tokens/redirect" class="btn btn-success">Yes, authenticate</a></p>
+  <p><a href="https://stackexchange.com/oauth?client_id=5723&scope=write_access,no_expiry&redirect_uri=http://wildfire.erwaysoftware.com/access_tokens/redirect" class="btn btn-success">Yes, authenticate</a></p>
   <br>
   <p class="text-muted">If it's not, you can always <a href="https://github.com/Charcoal-SE/flag-eventually">run this yourself</a>.</p>
 <% else %>
@@ -19,5 +19,5 @@
 
   <p class="text-muted">You've previously authenticated with the Stack Exchange API. To revoke this, go to <strong>edit profile & settings > applications</strong> on a Stack Exchange site and look for flag-eventually</p>
 
-  <p class="text-muted">If for whatever reason you want to get a new access token, <%= link_to "click here", "https://stackexchange.com/oauth?client_id=5723&scope=write_access,no_expiry&redirect_uri=http://flag-eventually.erwaysoftware.com/access_tokens/redirect" %>.
+  <p class="text-muted">If for whatever reason you want to get a new access token, <%= link_to "click here", "https://stackexchange.com/oauth?client_id=5723&scope=write_access,no_expiry&redirect_uri=http://wildfire.erwaysoftware.com/access_tokens/redirect" %>.
 <% end %>
