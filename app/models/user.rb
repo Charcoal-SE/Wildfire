@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   end
 
   def check_access_token
-    response = Net::HTTP.get(URI.parse("http://api.stackexchange.com/2.2/access-tokens/" + self.access_token))
+    response = Net::HTTP.get(URI.parse("http://api.stackexchange.com/2.2/access-tokens/" + self.access_token + "?key=" + APP_CONFIG["stack_api"]["key"]))
     begin
       object = JSON.parse(response)
       self.account_id = object["items"][0]["account_id"]
