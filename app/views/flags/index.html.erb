@@ -21,7 +21,7 @@
   <tbody>
     <% @queued_flags.each do |flag| %>
       <tr>
-        <td><%= flag.post_id %></td>
+        <td><%= link_to flag.post_id, flag.site.site_url + "/q/" + flag.post_id.to_s %></td>
         <td><%= flag.site.site_name %></td>
         <td><%= flag.flag_type.name %></td>
        <td><%= link_to 'Cancel', flag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -53,7 +53,7 @@
   <tbody>
     <% @errored_flags.each do |flag| %>
       <tr>
-        <td><%= flag.post_id %></td>
+        <td><%= link_to flag.post_id, flag.site.site_url + "/q/" + flag.post_id.to_s %></td>
         <td><%= flag.site.site_name %></td>
         <td><%= flag.flag_type.name %></td>
         <td><%= flag.failure_reason %></td>
@@ -80,7 +80,7 @@
   <tbody>
     <% @completed_flags.each do |flag| %>
       <tr>
-        <td><%= flag.post_id %></td>
+        <td><%= link_to flag.post_id, flag.site.site_url + "/q/" + flag.post_id.to_s %></td>
         <td><%= flag.site.site_name %></td>
         <td><%= flag.flag_type.name %></td>
         <td><%= flag.attempted_at %></td>
