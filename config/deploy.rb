@@ -3,6 +3,7 @@ lock '3.4.0'
 
 set :application, 'flag-eventually'
 set :repo_url, 'https://github.com/Charcoal-SE/flag-eventually.git'
+set :whenever_identifier, ->{ "#{fetch(:application)}_#{fetch(:stage)}" }
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp

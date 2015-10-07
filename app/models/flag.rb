@@ -3,7 +3,7 @@ class Flag < ActiveRecord::Base
   belongs_to :flag_queue
   belongs_to :flag_type
 
-  def send_flag
+  def send_flag(dry_run=false)
     # 1. Figure out if post is an answer or question
     # 2. Check if post has changed since it was registered for flagging (last activity date)
     # 3. Ask for flag options
@@ -36,7 +36,7 @@ class Flag < ActiveRecord::Base
           option_id = options[self.flag_type.name][0]["option_id"]
           puts "Flagging with option #{option_id}"
 
-          params = {'option_id' => option_id, 'id' => self.post_id, 'site' => site.site_domain, 'key' => APP_CONFIG["stack_api"]["key"], "access_token" => user.access_token, "preview" => "false"}
+          params = {'option_id' => option_id, 'id' => self.post_id, 'site' => site.site_domain, 'key' => APP_CONFIG["stack_api"]["key"], "access_token" => user.access_token, "preview" => dry_run.to_s}
 
           url = "https://api.stackexchange.com/2.2/#{self.post_type}s/#{self.post_id}/flags/add"
           puts url

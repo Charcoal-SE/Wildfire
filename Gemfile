@@ -4,6 +4,7 @@ gem 'devise'
 gem 'awesome_print'
 gem "twitter-bootstrap-rails"
 gem "puma"
+gem 'whenever'
 
 gem "mysql2", group: :production
 
