@@ -1,0 +1,13 @@
+common: &common
+  stack_api:
+    key: 'mykey'
+    secret : 'mysecret'
+
+development:
+  <<: *common
+
+test:
+  <<: *common
+
+production:
+  <<: *common
