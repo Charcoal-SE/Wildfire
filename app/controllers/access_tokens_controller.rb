@@ -11,8 +11,8 @@ class AccessTokensController < ApplicationController
       current_user.access_token = token
       current_user.save!
       redirect_to :success
-    rescue
-      render :text => "Something went wrong" and return
+    rescue => exception
+      render :text => "Something went wrong: #{exception.backtrace}" and return
     end
   end
 
