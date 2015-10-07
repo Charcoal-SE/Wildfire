@@ -7,6 +7,7 @@
     <tr>
       <th>Post ID</th>
       <th>Site</th>
+      <th>Reason</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -16,7 +17,8 @@
       <tr>
         <td><%= flag.post_id %></td>
         <td><%= flag.site.site_name %></td>
-        <td><%= link_to 'Cancel', flag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= flag.flag_type.name %></td>
+       <td><%= link_to 'Cancel', flag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -38,6 +40,7 @@
       <th>Post ID</th>
       <th>Site</th>
       <th>Reason</th>
+      <th>Failure reason</th>
     </tr>
   </thead>
 
@@ -46,6 +49,7 @@
       <tr>
         <td><%= flag.post_id %></td>
         <td><%= flag.site.site_name %></td>
+        <td><%= flag.flag_type.name %></td>
         <td><%= flag.failure_reason %></td>
       </tr>
     <% end %>
