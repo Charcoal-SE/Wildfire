@@ -1,28 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Flags</h1>
+<h3>Flags in queue</h3>
 
-<table>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Id</th>
-      <th>Completed</th>
-      <th>Failure reason</th>
-      <th>Attempted at</th>
-      <th colspan="3"></th>
+      <th>Post ID</th>
+      <th>Site</th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @flags.each do |flag| %>
+    <% @queued_flags.each do |flag| %>
       <tr>
-        <td><%= flag.id %></td>
-        <td><%= flag.completed %></td>
-        <td><%= flag.failure_reason %></td>
-        <td><%= flag.attempted_at %></td>
-        <td><%= link_to 'Show', flag %></td>
-        <td><%= link_to 'Edit', edit_flag_path(flag) %></td>
-        <td><%= link_to 'Destroy', flag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= flag.post_id %></td>
+        <td><%= flag.site.site_name %></td>
+        <td><%= link_to 'Cancel', flag, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -31,3 +25,31 @@
 <br>
 
 <%= link_to 'New Flag', new_flag_path %>
+
+<br>
+
+<% if @errored_flags.count > 0 %>
+
+<h3 class="text-danger">Failed</h3>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Post ID</th>
+      <th>Site</th>
+      <th>Reason</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @errored_flags.each do |flag| %>
+      <tr>
+        <td><%= flag.post_id %></td>
+        <td><%= flag.site.site_name %></td>
+        <td><%= flag.failure_reason %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>  
+
+<% end %>

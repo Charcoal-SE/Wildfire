@@ -6,7 +6,8 @@ class FlagsController < ApplicationController
   # GET /flags
   # GET /flags.json
   def index
-    @flags = Flag.all
+    @queued_flags = current_user.flag_queues.first.flags
+    @errored_flags = current_user.flag_queues.first.flags.where.not(:failure_reason => nil)
   end
 
   # GET /flags/1
@@ -27,6 +28,8 @@ class FlagsController < ApplicationController
   # POST /flags.json
   def create
     @flag = Flag.new(flag_params)
+    @flag.site = Site.find_by_site_name("Stack Overflow")
+    @flag.flag_queue = current_user.flag_queues.first
 
     respond_to do |format|
       if @flag.save
@@ -71,6 +74,6 @@ class FlagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flag_params
-      params.require(:flag).permit(:id, :completed, :failure_reason, :attempted_at)
+      params.require(:flag).permit(:post_id, :flag_type_id)
     end
 end

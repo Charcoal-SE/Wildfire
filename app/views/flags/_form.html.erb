@@ -12,20 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :id %><br>
-    <%= f.number_field :id %>
+    <%= f.label :post_id %><br>
+    <%= f.number_field :post_id %>
   </div>
   <div class="field">
-    <%= f.label :completed %><br>
-    <%= f.check_box :completed %>
-  </div>
-  <div class="field">
-    <%= f.label :failure_reason %><br>
-    <%= f.text_field :failure_reason %>
-  </div>
-  <div class="field">
-    <%= f.label :attempted_at %><br>
-    <%= f.datetime_select :attempted_at %>
+    <%= f.label :flag_type_id %>
+    <%= f.select :flag_type_id, FlagType.all.map{|s| [s.name, s.id]} %>
   </div>
   <div class="actions">
     <%= f.submit %>
