@@ -13,7 +13,7 @@ class Flag < ActiveRecord::Base
     site = self.site
     user = self.flag_queue.user
 
-    post = Net::HTTP.get(URI.parse("http://api.stackexchange.com/2.2/posts/#{self.post_id}?site=#{site.site_domain}&filter=!-.5dR.mQlmgI"))
+    post = Net::HTTP.get(URI.parse("http://api.stackexchange.com/2.2/posts/#{self.post_id}?site=#{site.site_domain}&filter=!-.5dR.mQlmgI&key=#{APP_CONFIG['stack_api']['key']}"))
     parsed_json = JSON.parse(post)
 
     if parsed_json["items"] and parsed_json["items"].count > 0
