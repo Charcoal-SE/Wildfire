@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get '/access_tokens', to: 'access_tokens#begin'
+  post 'access_tokens/redirect'
+  get 'access_tokens/success'
+
   resources :flags
 
   root to: "flags#index"

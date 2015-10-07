@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007164951) do
+ActiveRecord::Schema.define(version: 20151007165534) do
 
   create_table "flag_queues", force: :cascade do |t|
     t.string   "name"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20151007164951) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "approved"
+    t.string   "access_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
