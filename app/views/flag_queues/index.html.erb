@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Flag Queues</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @flag_queues.each do |flag_queue| %>
+      <tr>
+        <td><%= flag_queue.name %></td>
+        <td><%= link_to 'Show', flag_queue %></td>
+        <td><%= link_to 'Edit', edit_flag_queue_path(flag_queue) %></td>
+        <td><%= link_to 'Destroy', flag_queue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Flag queue', new_flag_queue_path %>

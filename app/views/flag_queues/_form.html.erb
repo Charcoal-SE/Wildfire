@@ -1,0 +1,21 @@
+<%= form_for(@flag_queue) do |f| %>
+  <% if @flag_queue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@flag_queue.errors.count, "error") %> prohibited this flag_queue from being saved:</h2>
+
+      <ul>
+      <% @flag_queue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
