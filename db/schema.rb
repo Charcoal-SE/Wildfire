@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007145806) do
+ActiveRecord::Schema.define(version: 20151007154934) do
 
   create_table "flag_queues", force: :cascade do |t|
     t.string   "name"

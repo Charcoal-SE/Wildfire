@@ -11,12 +11,16 @@ module SitesHelper
     if sites.count > 100 #all is well
       sites.each do |site|
         if Site.find_by_site_url(site["site_url"])  == nil
-          s=Site.new
-          s.site_url = site["site_url"]
-          s.site_domain = URI.parse(s.site_url).host
-          s.site_logo = site["favicon_url"]
-          s.site_name = site["name"]
-          s.save!
+          begin
+            s=Site.new
+            s.site_url = site["site_url"]
+            s.site_domain = URI.parse(s.site_url).host
+            s.site_logo = site["favicon_url"]
+            s.site_name = site["name"]
+            s.save!
+          rescue
+            puts "Couldn't add site with name #{site["name"]}"
+          end
         end
       end
     end
