@@ -3,7 +3,7 @@ class AccessTokensController < ApplicationController
 
   def redirect
     puts "Recieved code #{params[:code]}"
-    post_params = {'client_id' => '5723', 'client_secret' => APP_CONFIG["stack_api"]["secret"], 'code' => params[:code], 'redirect_uri' => 'http://flag-eventually.erwaysoftware.com/access_tokens/redirect'}
+    post_params = {'client_id' => '5723', 'client_secret' => APP_CONFIG["stack_api"]["secret"], 'code' => params[:code], 'redirect_uri' => 'http://wildfire.erwaysoftware.com/access_tokens/redirect'}
 
     token_request = Net::HTTP.post_form(URI.parse("https://stackexchange.com/oauth/access_token"), post_params)
     begin
