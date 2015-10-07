@@ -1,4 +1,4 @@
-# flag-eventually
+# Wildfire
 For queuing up flags, so as not to make moderators angry.
 
 ##Premise
