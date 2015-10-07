@@ -10,6 +10,7 @@ class AccessTokensController < ApplicationController
       token = token_request.body.scan(/access_token=(.*)$/)[0][0]
       current_user.access_token = token
       current_user.save!
+      current_user.check_access_token
       redirect_to flags_path
     rescue => exception
       render :text => "Something went wrong: #{exception.backtrace}" and return

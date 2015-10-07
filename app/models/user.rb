@@ -15,6 +15,19 @@ class User < ActiveRecord::Base
     Rails.logger.info "Created flag queue #{f.id} for new user #{self.id}"
   end
 
+  def self.check_access_token
+    response = Net::HTTP.get(URI.parse("http://api.stackexchange.com/2.2/access-tokens/" + current_user.access_token))
+    begin
+      object = JSON.parse(response)
+      self.account_id = object["items"][0]["account_id"]
+      self.save!
+      return true
+    rescue
+      puts "Something went wrong verifying user"
+      return false
+    end
+  end
+
   def active_for_authentication? 
     super && approved? 
   end

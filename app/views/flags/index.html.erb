@@ -66,5 +66,5 @@
 
 <% unless current_user.access_token.nil? %>
   <br>
-  <p class="text-muted">Linked to your Stack Exchange account. <%= link_to "Manage access token", access_tokens_path %>.</p>
+  <p class="text-muted">Linked to <a href="https://stackexchange.com/users/<%= current_user.account_id%>">your Stack Exchange account</a>. <%= link_to "Manage access token", access_tokens_path %>.</p>
 <% end %>
