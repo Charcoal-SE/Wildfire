@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007193104) do
+ActiveRecord::Schema.define(version: 20151007214001) do
 
   create_table "flag_queues", force: :cascade do |t|
     t.string   "name"
@@ -29,13 +29,13 @@ ActiveRecord::Schema.define(version: 20151007193104) do
   end
 
   create_table "flags", force: :cascade do |t|
-    t.boolean  "completed"
+    t.boolean  "completed",      default: false
     t.string   "failure_reason"
     t.datetime "attempted_at"
     t.integer  "flag_queue_id"
     t.integer  "site_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "post_id"
     t.integer  "flag_type_id"
     t.string   "post_type"

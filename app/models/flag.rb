@@ -45,6 +45,8 @@ class Flag < ActiveRecord::Base
 
           if response["error_message"] != nil and response["error_message"].length > 0
             self.failure_reason = response["error_message"]
+          else
+            self.completed = true
           end
         else
           self.failure_reason = "Flag type '#{self.flag_type.name}' not available on post"
