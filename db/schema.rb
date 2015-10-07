@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007035358) do
+ActiveRecord::Schema.define(version: 20151007150014) do
 
   create_table "flag_queues", force: :cascade do |t|
     t.string   "name"
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(version: 20151007035358) do
   end
 
   add_index "flag_queues", ["user_id"], name: "index_flag_queues_on_user_id"
+
+  create_table "sites", force: :cascade do |t|
+    t.string   "site_name"
+    t.string   "site_url"
+    t.string   "site_logo"
+    t.string   "site_domain"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
