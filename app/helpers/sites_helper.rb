@@ -1,7 +1,7 @@
 module SitesHelper
   def self.updateSites
     require 'net/http'
-    url = URI.parse('http://api.stackexchange.com/2.2/sites?pagesize=1000&filter=!*L1-8Dpi2xJ-sYWj')
+    url = URI.parse('http://api.stackexchange.com/2.2/sites?pagesize=1000&filter=!*L1-8Dpi2xJ-sYWj&key=' + APP_CONFIG["stack_api"]["key"])
     req = Net::HTTP::Get.new(url.to_s)
     res = Net::HTTP.start(url.host, url.port) {|http|
       http.request(req)
