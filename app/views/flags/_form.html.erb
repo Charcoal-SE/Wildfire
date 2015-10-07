@@ -12,6 +12,10 @@
   <% end %>
 
   <div class="field">
+    <%= f.label :site_id %>
+    <%= f.select :site_id, Site.all.sort_by{ |s| s.site_name }.map{ |s| [s.site_name, s.id] } %>
+  </div>
+  <div class="field">
     <%= f.label :post_id %><br>
     <%= f.number_field :post_id %>
   </div>

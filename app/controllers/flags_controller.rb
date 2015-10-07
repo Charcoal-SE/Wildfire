@@ -28,7 +28,6 @@ class FlagsController < ApplicationController
   # POST /flags.json
   def create
     @flag = Flag.new(flag_params)
-    @flag.site = Site.find_by_site_name("Stack Overflow")
     @flag.flag_queue = current_user.flag_queues.first
 
     respond_to do |format|
@@ -74,6 +73,6 @@ class FlagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flag_params
-      params.require(:flag).permit(:post_id, :flag_type_id)
+      params.require(:flag).permit(:post_id, :flag_type_id, :site_id)
     end
 end
