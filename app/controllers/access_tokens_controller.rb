@@ -1,5 +1,6 @@
 class AccessTokensController < ApplicationController
   def redirect
+    puts "Recieved code #{params[:code]}"
   end
 
   def begin

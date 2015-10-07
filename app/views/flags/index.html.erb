@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<% if current_user.access_token.nil? %>
+  <div class="alert alert-danger" role="alert"><strong>Not authenticated.</strong> An access token is required to flag posts.
+  <%= link_to "Authenticate", access_tokens_path %>.
+</div>
+<% end %>
+
 <h3>Flags in queue</h3>
 
 <table class="table table-striped">
