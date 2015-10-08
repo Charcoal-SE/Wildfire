@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get '/access_tokens', to: 'access_tokens#begin'
   get 'access_tokens/redirect'
 
+  patch '/update_frequency', to: 'flags#update_frequency'
+
   resources :flags
 
   root to: "flags#index"

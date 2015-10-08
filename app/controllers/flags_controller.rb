@@ -3,6 +3,15 @@ class FlagsController < ApplicationController
 
   before_action :authenticate_user!
 
+  def update_frequency
+    queue = current_user.flag_queues.first
+
+    queue.frequency = params[:flag_queue][:frequency]
+    queue.save!
+
+    redirect_to '/'
+  end
+
   # GET /flags
   # GET /flags.json
   def index
