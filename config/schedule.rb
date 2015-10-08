@@ -1,4 +1,4 @@
-every 2.hours do
+every 1.hours do
   runner 'FlagQueuesHelper.run_cycle'
 end
 
