@@ -20,6 +20,10 @@
     <%= f.number_field :post_id %>
   </div>
   <div class="field">
+    <%= f.label :comment_ids %>
+    <%= f.text_field :comment_ids %>
+  </div>
+  <div class="field">
     <%= f.label :flag_type_id %>
     <%= f.select :flag_type_id, FlagType.all.map{|s| [s.name, s.id]} %>
   </div>

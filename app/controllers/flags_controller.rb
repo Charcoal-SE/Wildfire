@@ -40,11 +40,19 @@ class FlagsController < ApplicationController
     @flag = Flag.new(flag_params)
     @flag.flag_queue = current_user.flag_queues.first
 
-    respond_to do |format|
-      if @flag.save
-        format.html { redirect_to @flag, notice: 'Flag was successfully created.' }
+    if @flag.comment_ids.present? and @flag.post_id.present?
+      render :text => "You can't flag a post and comments at the same time." and return
+    end
+
+    @flag.post_type = "comments" if @flag.comment_ids.present?
+
+    if @flag.save
+      respond_to do |format|
+        format.html { redirect_to flags_path, notice: 'Flag was successfully created.' }
         format.json { render :show, status: :created, location: @flag }
-      else
+      end
+    else
+      respond_to do |format|
         format.html { render :new }
         format.json { render json: @flag.errors, status: :unprocessable_entity }
       end
@@ -83,6 +91,6 @@ class FlagsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def flag_params
-      params.require(:flag).permit(:post_id, :flag_type_id, :site_id)
+      params.require(:flag).permit(:post_id, :flag_type_id, :site_id, :comment_ids)
     end
 end

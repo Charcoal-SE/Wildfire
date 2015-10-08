@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008194425) do
+ActiveRecord::Schema.define(version: 20151008210240) do
 
   create_table "flag_queues", force: :cascade do |t|
     t.string   "name"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20151008194425) do
     t.integer  "post_id"
     t.integer  "flag_type_id"
     t.string   "post_type"
+    t.string   "comment_ids"
   end
 
   create_table "sites", force: :cascade do |t|
