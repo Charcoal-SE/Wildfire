@@ -6,7 +6,7 @@
 </div>
 <% end %>
 
-<h3>Flags in queue</h3>
+<h3>Flags in queue (<%= @queued_flags.count.to_s %>)</h3>
 
 <table class="table table-striped">
   <thead>
@@ -38,7 +38,7 @@
 
 <% if @errored_flags.count > 0 %>
 
-<h3 class="text-danger">Failed</h3>
+<h3 class="text-danger">Failed (<%= @errored_flags.count.to_s %>)</h3>
 
 <table class="table table-striped">
   <thead>
@@ -65,7 +65,7 @@
 <% end %>
 
 <% if @completed_flags.count > 0 %>
-<h3 class="text-success">Completed</h3>
+<h3 class="text-success">Completed (<%= @completed_flags.count.to_s %>)</h3>
 
 <table class="table table-striped">
   <thead>
