@@ -1,4 +1,4 @@
-every :hour do
+every 30.minutes do
   runner 'FlagQueuesHelper.run_cycle'
 end
 

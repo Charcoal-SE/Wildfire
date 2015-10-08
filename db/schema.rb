@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151007214001) do
+ActiveRecord::Schema.define(version: 20151008194425) do
 
   create_table "flag_queues", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.integer  "user_id"
+    t.integer  "frequency",  default: 7200
+    t.datetime "last_run",   default: '2015-10-08 19:47:15'
   end
 
   add_index "flag_queues", ["user_id"], name: "index_flag_queues_on_user_id"
