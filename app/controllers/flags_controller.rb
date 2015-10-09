@@ -2,6 +2,58 @@ class FlagsController < ApplicationController
   before_action :set_flag, only: [:show, :edit, :update, :destroy]
 
   before_action :authenticate_user!
+  protect_from_forgery :except => [:userscript_new]
+
+  def userscript_new
+    @flag = Flag.new
+
+    origin = request.headers['origin'].scan(/https?:\/\/(.*)$/)[0][0]
+    site = Site.find_by_site_domain(origin)
+
+    if site.nil?
+      render :text => "Site not recognized"
+      return
+    end
+
+    @flag.site = site
+
+    if params[:post_id].present? and params[:comment_ids].present?
+      render :text => "Can't flag a post and a comment at the same time"
+      return
+    end
+    if params[:post_id].nil? and params[:comment_ids].nil?
+      render :text => "Don't know what to flag"
+      return
+    end
+
+    if params[:post_id].present?
+      @flag.post_id = params[:post_id]
+    else #we're dealing with comments
+      @flag.comment_ids = params[:comment_ids]
+    end
+
+    if params[:flag_type].nil?
+      render :text => "No flag type, don't know how to flag"
+      return
+    end
+
+    type = FlagType.find_by_name(params[:flag_type])
+
+    if type.nil?
+      render :text => "Unrecognized flag type"
+      return
+    end
+
+    @flag.flag_type = type
+
+    @flag.flag_queue = current_user.flag_queues.first
+
+    if @flag.save
+      render :text => "OK"
+    else
+      render :text => "Something went wrong"
+    end
+  end
 
   def update_frequency
     queue = current_user.flag_queues.first

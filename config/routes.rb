@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  post '/flags/userscript-new', to: "flags#userscript_new"
   get '/access_tokens', to: 'access_tokens#begin'
   get 'access_tokens/redirect'
 

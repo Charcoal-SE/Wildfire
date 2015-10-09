@@ -5,6 +5,7 @@ gem 'awesome_print'
 gem "twitter-bootstrap-rails"
 gem "puma"
 gem 'whenever'
+gem 'rack-cors', :require => 'rack/cors'
 
 gem "mysql2", group: :production
 
