@@ -9,12 +9,14 @@ module FlagQueuesHelper
       puts flags
 
       if flags.count > 0
-        queue.last_run = cycle_start
-        queue.save!
+        (1..queue.batch_size).each do
+          queue.last_run = cycle_start
+          queue.save!
 
-        flag = flags.sort_by { |f| f.created_at }.first
-        puts "Flagging #{flag.post_id} on #{flag.site.site_domain}"
-        flag.send_flag
+          flag = flags.sort_by { |f| f.created_at }.first
+          puts "Flagging #{flag.post_id} on #{flag.site.site_domain}"
+          flag.send_flag
+        end
       end
     end
   end

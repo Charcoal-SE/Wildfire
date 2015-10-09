@@ -7,7 +7,9 @@
 <% end %>
 
 <%= form_for current_user.flag_queues.first, url: '/update_frequency' do |f| %>
-  Flagging every
+  Flagging 
+  <%= f.select :batch_size, (0..5).map{|a| [a,a]}, :selected => current_user.flag_queues.first.batch_size %>
+  <%= (current_user.flag_queues.first.batch_size == 1) ? "item" : "items" %> every
   <%= f.select :frequency, [["30 minutes", 1800], ["1 hour", 3600], ["2 hours", 7200], ["4 hours", 14400], ["6 hours", 21600]], :selected => current_user.flag_queues.first.frequency %>
 
   <%= f.submit "Update", :class => "btn btn-primary btn-xs" %>

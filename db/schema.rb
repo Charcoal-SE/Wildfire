@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008210240) do
+ActiveRecord::Schema.define(version: 20151009010309) do
 
   create_table "flag_queues", force: :cascade do |t|
     t.string   "name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20151008210240) do
     t.integer  "user_id"
     t.integer  "frequency",  default: 7200
     t.datetime "last_run",   default: '2015-10-08 19:47:15'
+    t.integer  "batch_size", default: 1
   end
 
   add_index "flag_queues", ["user_id"], name: "index_flag_queues_on_user_id"

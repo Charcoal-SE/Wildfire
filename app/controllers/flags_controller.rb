@@ -59,6 +59,7 @@ class FlagsController < ApplicationController
     queue = current_user.flag_queues.first
 
     queue.frequency = params[:flag_queue][:frequency]
+    queue.batch_size = [5, params[:flag_queue][:batch_size].to_i].min
     queue.save!
 
     redirect_to '/'
