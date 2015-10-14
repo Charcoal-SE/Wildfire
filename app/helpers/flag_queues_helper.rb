@@ -10,7 +10,7 @@ module FlagQueuesHelper
         puts flags
 
         if flags.count > 0
-          flag = flags.sort_by { |f| f.created_at }.first
+          flag = flags.sample
           puts "Flagging #{flag.post_id} on #{flag.site.site_domain}"
           flag.send_flag
         end
