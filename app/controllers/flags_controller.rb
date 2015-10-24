@@ -69,7 +69,7 @@ class FlagsController < ApplicationController
   # GET /flags.json
   def index
     @queued_flags = current_user.flag_queues.first.flags.where(:completed => false).order('created_at ASC')
-    @errored_flags = current_user.flag_queues.first.flags.where.not(:failure_reason => nil)
+    @errored_flags = current_user.flag_queues.first.flags.where.not(:failure_reason => nil).order('created_at DESC').first(5)
     @completed_flags = current_user.flag_queues.first.flags.where(:completed => true, :failure_reason => nil).order('attempted_at DESC')
   end
 
